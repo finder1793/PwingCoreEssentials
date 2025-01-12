@@ -44,7 +44,7 @@ public class HomeMenu implements Listener {
 
         for (int i = startIndex; i < endIndex; i++) {
             String homeName = homeNames.get(i);
-            ItemStack item = new ItemStack(Material.BED);
+            ItemStack item = new ItemStack(Material.RED_BED); // Replace Material.BED with Material.RED_BED
             ItemMeta meta = item.getItemMeta();
             meta.setDisplayName(homeName);
             item.setItemMeta(meta);
@@ -71,11 +71,11 @@ public class HomeMenu implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (event.getInventory().getTitle().startsWith("Select a Home")) {
+        if (event.getView().getTitle().startsWith("Select a Home")) { // Use getView().getTitle() directly
             event.setCancelled(true);
             if (event.getCurrentItem() != null) {
                 ItemStack clickedItem = event.getCurrentItem();
-                if (clickedItem.getType() == Material.BED) {
+                if (clickedItem.getType() == Material.RED_BED) { // Replace Material.BED with Material.RED_BED
                     String homeName = clickedItem.getItemMeta().getDisplayName();
                     Map<String, Location> homes = plugin.getHomeManager().getHomes(player);
                     if (homes.containsKey(homeName)) {

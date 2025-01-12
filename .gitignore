@@ -1,0 +1,31 @@
+# Gradle files
+.gradle/
+build/
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VS Code files
+.vscode/
+
+# MacOS files
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Kotlin specific
+*.kotlin_metadata
+
+# Java specific
+*.class
+*.jar
+*.war
+*.ear
+
+# Other
+out/

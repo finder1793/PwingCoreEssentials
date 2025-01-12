@@ -7,7 +7,7 @@ import com.yourname.essentials.commands.SetWarpCommand;
 import com.yourname.essentials.commands.DelWarpCommand;
 import com.yourname.essentials.commands.GameModeCommand;
 import com.yourname.essentials.commands.SetPortalCommand;
-import com.yourname.essentials.listeners.HomeMenuListener;
+import com.yourname.essentials.listeners.HomeMenuListener; // Ensure this import exists
 import com.yourname.essentials.listeners.PortalListener;
 import org.bukkit.GameMode;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -40,7 +40,7 @@ public class EssentialsPlugin extends JavaPlugin {
         this.getCommand("gm3").setExecutor(new GameModeCommand(GameMode.SPECTATOR));
         this.getCommand("setportal").setExecutor(new SetPortalCommand(this));
         // Register other commands and events
-        getServer().getPluginManager().registerEvents(new HomeMenuListener(this), this);
+        getServer().getPluginManager().registerEvents(new HomeMenuListener(this), this); // Ensure HomeMenuListener exists
         getServer().getPluginManager().registerEvents(new PortalListener(this), this);
     }
 

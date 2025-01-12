@@ -116,7 +116,7 @@ public class WarpMenu implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (event.getInventory().getTitle().startsWith("Select a Warp")) {
+        if (event.getView().getTitle().startsWith("Select a Warp")) { // Use getView().getTitle() directly
             event.setCancelled(true);
             if (event.getCurrentItem() != null) {
                 ItemStack clickedItem = event.getCurrentItem();
