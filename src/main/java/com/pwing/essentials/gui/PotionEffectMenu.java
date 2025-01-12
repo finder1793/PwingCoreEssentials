@@ -1,6 +1,6 @@
-package com.yourname.essentials.gui;
+package com.pwing.essentials.gui;
 
-import com.yourname.essentials.EssentialsPlugin;
+import com.pwing.essentials.EssentialsPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -15,7 +15,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class PotionEffectDurationMenu implements Listener {
+public class PotionEffectMenu implements Listener {
 
     private final EssentialsPlugin plugin;
     private final Player player;
@@ -25,9 +25,8 @@ public class PotionEffectDurationMenu implements Listener {
     private final Location portalDestination;
     private final Particle particle;
     private final int particleAmount;
-    private final PotionEffectType effectType;
 
-    public PotionEffectDurationMenu(EssentialsPlugin plugin, Player player, String portalName, Location portalLocation, Location portalDestination, Particle particle, int particleAmount, PotionEffectType effectType) {
+    public PotionEffectMenu(EssentialsPlugin plugin, Player player, String portalName, Location portalLocation, Location portalDestination, Particle particle, int particleAmount) {
         this.plugin = plugin;
         this.player = player;
         this.portalName = portalName;
@@ -35,8 +34,7 @@ public class PotionEffectDurationMenu implements Listener {
         this.portalDestination = portalDestination;
         this.particle = particle;
         this.particleAmount = particleAmount;
-        this.effectType = effectType;
-        this.inventory = Bukkit.createInventory(null, 27, "Select Effect Duration");
+        this.inventory = Bukkit.createInventory(null, 54, "Select Potion Effect");
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
         initializeItems();
@@ -47,12 +45,14 @@ public class PotionEffectDurationMenu implements Listener {
     }
 
     private void initializeItems() {
-        for (int i = 1; i <= 10; i++) {
-            ItemStack item = new ItemStack(Material.POTION);
-            ItemMeta meta = item.getItemMeta();
-            meta.setDisplayName(String.valueOf(i * 20));
-            item.setItemMeta(meta);
-            inventory.addItem(item);
+        for (PotionEffectType effectType : PotionEffectType.values()) {
+            if (effectType != null) {
+                ItemStack item = new ItemStack(Material.POTION);
+                ItemMeta meta = item.getItemMeta();
+                meta.setDisplayName(effectType.getName());
+                item.setItemMeta(meta);
+                inventory.addItem(item);
+            }
         }
     }
 
@@ -61,10 +61,11 @@ public class PotionEffectDurationMenu implements Listener {
         if (event.getInventory().equals(inventory)) {
             event.setCancelled(true);
             if (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.POTION) {
-                int duration = Integer.parseInt(event.getCurrentItem().getItemMeta().getDisplayName());
-                player.sendMessage("Potion effect duration set to " + duration);
+                String effectName = event.getCurrentItem().getItemMeta().getDisplayName();
+                PotionEffectType effectType = PotionEffectType.getByName(effectName);
+                player.sendMessage("Potion effect set to " + effectName);
                 player.closeInventory();
-                new PotionEffectAmplifierMenu(plugin, player, portalName, portalLocation, portalDestination, particle, particleAmount, effectType, duration).open();
+                new PotionEffectDurationMenu(plugin, player, portalName, portalLocation, portalDestination, particle, particleAmount, effectType).open();
             }
         }
     }

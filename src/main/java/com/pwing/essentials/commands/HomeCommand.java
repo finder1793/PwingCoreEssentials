@@ -1,27 +1,26 @@
-package com.yourname.essentials.commands;
+package com.pwing.essentials.commands;
 
-import org.bukkit.GameMode;
+import com.pwing.essentials.EssentialsPlugin;
+import com.pwing.essentials.gui.HomeMenu;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class GameModeCommand implements CommandExecutor {
+public class HomeCommand implements CommandExecutor {
 
-    private final GameMode gameMode;
+    private final EssentialsPlugin plugin;
 
-    public GameModeCommand(GameMode gameMode) {
-        this.gameMode = gameMode;
+    public HomeCommand(EssentialsPlugin plugin) {
+        this.plugin = plugin;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            String permission = "essentials.gamemode." + gameMode.name().toLowerCase();
-            if (player.hasPermission(permission)) {
-                player.setGameMode(gameMode);
-                player.sendMessage("Game mode changed to " + gameMode.name().toLowerCase());
+            if (player.hasPermission("essentials.home")) {
+                new HomeMenu(plugin, player).open();
                 return true;
             } else {
                 player.sendMessage("You do not have permission to use this command.");

@@ -1,7 +1,7 @@
-package com.yourname.essentials.listeners;
+package com.pwing.essentials.listeners;
 
-import com.yourname.essentials.EssentialsPlugin;
-import com.yourname.essentials.PortalManager;
+import com.pwing.essentials.EssentialsPlugin;
+import com.pwing.essentials.PortalManager;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;

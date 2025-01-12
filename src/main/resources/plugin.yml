@@ -1,5 +1,5 @@
 name: EssentialsPlugin
-main: com.yourname.essentials.EssentialsPlugin
+main: com.pwing.essentials.EssentialsPlugin
 version: 1.0
 api-version: 1.21
 commands:
@@ -52,6 +52,11 @@ commands:
     aliases: [gmsp, gamemode sp]
     permission: essentials.gamemode.spectator
     permission-message: You do not have permission to use this command.
+  setportal:
+    description: Set a portal location.
+    usage: /setportal <name>
+    permission: essentials.setportal
+    permission-message: You do not have permission to use this command.
 permissions:
   essentials.home:
     description: Allows the player to teleport to their home.
@@ -94,4 +99,7 @@ permissions:
     default: op
   essentials.sethome.limit.unlimited:
     description: Allows the player to set unlimited homes.
+    default: op
+  essentials.setportal:
+    description: Allows the player to set a portal location.
     default: op

@@ -1,7 +1,7 @@
-package com.yourname.essentials.listeners;
+package com.pwing.essentials.listeners;
 
-import com.yourname.essentials.EssentialsPlugin;
-import com.yourname.essentials.gui.HomeMenu;
+import com.pwing.essentials.EssentialsPlugin;
+import com.pwing.essentials.gui.HomeMenu;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;

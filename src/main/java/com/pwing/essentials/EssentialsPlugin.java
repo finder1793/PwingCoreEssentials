@@ -1,14 +1,16 @@
-package com.yourname.essentials;
+package com.pwing.essentials;
 
-import com.yourname.essentials.commands.HomeCommand;
-import com.yourname.essentials.commands.SetHomeCommand;
-import com.yourname.essentials.commands.WarpCommand;
-import com.yourname.essentials.commands.SetWarpCommand;
-import com.yourname.essentials.commands.DelWarpCommand;
-import com.yourname.essentials.commands.GameModeCommand;
-import com.yourname.essentials.commands.SetPortalCommand;
-import com.yourname.essentials.listeners.HomeMenuListener; // Ensure this import exists
-import com.yourname.essentials.listeners.PortalListener;
+import com.pwing.essentials.commands.HomeCommand;
+import com.pwing.essentials.commands.SetHomeCommand;
+import com.pwing.essentials.commands.WarpCommand;
+import com.pwing.essentials.commands.SetWarpCommand;
+import com.pwing.essentials.commands.DelWarpCommand;
+import com.pwing.essentials.commands.GameModeCommand;
+import com.pwing.essentials.commands.SetPortalCommand;
+import com.pwing.essentials.commands.HologramCommand;
+import com.pwing.essentials.listeners.HomeMenuListener;
+import com.pwing.essentials.listeners.PortalListener;
+import com.pwing.essentials.listeners.HologramClickListener;
 import org.bukkit.GameMode;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -39,9 +41,11 @@ public class EssentialsPlugin extends JavaPlugin {
         this.getCommand("gm2").setExecutor(new GameModeCommand(GameMode.ADVENTURE));
         this.getCommand("gm3").setExecutor(new GameModeCommand(GameMode.SPECTATOR));
         this.getCommand("setportal").setExecutor(new SetPortalCommand(this));
+        this.getCommand("hologram").setExecutor(new HologramCommand(this));
         // Register other commands and events
         getServer().getPluginManager().registerEvents(new HomeMenuListener(this), this); // Ensure HomeMenuListener exists
         getServer().getPluginManager().registerEvents(new PortalListener(this), this);
+        getServer().getPluginManager().registerEvents(new HologramClickListener(this), this);
     }
 
     @Override

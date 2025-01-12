@@ -1,7 +1,7 @@
-package com.yourname.essentials.commands;
+package com.pwing.essentials.commands;
 
-import com.yourname.essentials.EssentialsPlugin;
-import com.yourname.essentials.gui.PortalEffectMenu;
+import com.pwing.essentials.EssentialsPlugin;
+import com.pwing.essentials.gui.PortalEffectMenu;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.Command;

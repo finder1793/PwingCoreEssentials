@@ -1,6 +1,6 @@
-package com.yourname.essentials.gui;
+package com.pwing.essentials.gui;
 
-import com.yourname.essentials.EssentialsPlugin;
+import com.pwing.essentials.EssentialsPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;

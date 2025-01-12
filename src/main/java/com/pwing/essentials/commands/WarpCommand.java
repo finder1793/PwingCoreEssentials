@@ -1,7 +1,7 @@
-package com.yourname.essentials.commands;
+package com.pwing.essentials.commands;
 
-import com.yourname.essentials.EssentialsPlugin;
-import com.yourname.essentials.gui.WarpMenu;
+import com.pwing.essentials.EssentialsPlugin;
+import com.pwing.essentials.gui.WarpMenu;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

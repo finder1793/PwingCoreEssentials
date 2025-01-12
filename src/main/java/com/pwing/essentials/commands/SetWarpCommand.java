@@ -1,16 +1,17 @@
-package com.yourname.essentials.commands;
+package com.pwing.essentials.commands;
 
-import com.yourname.essentials.EssentialsPlugin;
+import com.pwing.essentials.EssentialsPlugin;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class DelWarpCommand implements CommandExecutor {
+public class SetWarpCommand implements CommandExecutor {
 
     private final EssentialsPlugin plugin;
 
-    public DelWarpCommand(EssentialsPlugin plugin) {
+    public SetWarpCommand(EssentialsPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -18,15 +19,16 @@ public class DelWarpCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            if (player.hasPermission("essentials.delwarp")) {
+            if (player.hasPermission("essentials.setwarp")) {
                 if (args.length > 1) {
                     String category = args[0];
                     String warpName = args[1];
-                    plugin.getWarpManager().deleteWarp(category, warpName);
-                    player.sendMessage("Warp deleted: " + category + " - " + warpName);
+                    Location location = player.getLocation();
+                    plugin.getWarpManager().setWarp(category, warpName, location);
+                    player.sendMessage("Warp set: " + category + " - " + warpName);
                     return true;
                 } else {
-                    player.sendMessage("Usage: /delwarp <category> <name>");
+                    player.sendMessage("Usage: /setwarp <category> <name>");
                     return false;
                 }
             } else {

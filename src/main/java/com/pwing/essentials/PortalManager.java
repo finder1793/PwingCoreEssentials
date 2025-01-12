@@ -1,4 +1,4 @@
-package com.yourname.essentials;
+package com.pwing.essentials;
 
 import org.bukkit.Location;
 import org.bukkit.Particle;
