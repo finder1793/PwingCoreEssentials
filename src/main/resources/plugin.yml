@@ -1,0 +1,97 @@
+name: EssentialsPlugin
+main: com.yourname.essentials.EssentialsPlugin
+version: 1.0
+api-version: 1.21
+commands:
+  home:
+    description: Teleport to your home location.
+    usage: /home [name]
+    permission: essentials.home
+    permission-message: You do not have permission to use this command.
+  sethome:
+    description: Set a home location.
+    usage: /sethome [name]
+    permission: essentials.sethome
+    permission-message: You do not have permission to use this command.
+  warp:
+    description: Teleport to a warp location.
+    usage: /warp
+    permission: essentials.warp
+    permission-message: You do not have permission to use this command.
+  setwarp:
+    description: Set a warp location.
+    usage: /setwarp <category> <name>
+    permission: essentials.setwarp
+    permission-message: You do not have permission to use this command.
+  delwarp:
+    description: Delete a warp location.
+    usage: /delwarp <category> <name>
+    permission: essentials.delwarp
+    permission-message: You do not have permission to use this command.
+  gm0:
+    description: Change to survival mode.
+    usage: /gm0
+    aliases: [gms, gamemode s]
+    permission: essentials.gamemode.survival
+    permission-message: You do not have permission to use this command.
+  gm1:
+    description: Change to creative mode.
+    usage: /gm1
+    aliases: [gmc, gamemode c]
+    permission: essentials.gamemode.creative
+    permission-message: You do not have permission to use this command.
+  gm2:
+    description: Change to adventure mode.
+    usage: /gm2
+    aliases: [gma, gamemode a]
+    permission: essentials.gamemode.adventure
+    permission-message: You do not have permission to use this command.
+  gm3:
+    description: Change to spectator mode.
+    usage: /gm3
+    aliases: [gmsp, gamemode sp]
+    permission: essentials.gamemode.spectator
+    permission-message: You do not have permission to use this command.
+permissions:
+  essentials.home:
+    description: Allows the player to teleport to their home.
+    default: true
+  essentials.sethome:
+    description: Allows the player to set a home location.
+    default: true
+  essentials.warp:
+    description: Allows the player to teleport to a warp location.
+    default: true
+  essentials.setwarp:
+    description: Allows the player to set a warp location.
+    default: op
+  essentials.delwarp:
+    description: Allows the player to delete a warp location.
+    default: op
+  essentials.gamemode.survival:
+    description: Allows the player to change to survival mode.
+    default: op
+  essentials.gamemode.creative:
+    description: Allows the player to change to creative mode.
+    default: op
+  essentials.gamemode.adventure:
+    description: Allows the player to change to adventure mode.
+    default: op
+  essentials.gamemode.spectator:
+    description: Allows the player to change to spectator mode.
+    default: op
+  essentials.sethome.limit.1:
+    description: Allows the player to set 1 home.
+    default: true
+  essentials.sethome.limit.2:
+    description: Allows the player to set 2 homes.
+    default: op
+  essentials.sethome.limit.3:
+    description: Allows the player to set 3 homes.
+    default: op
+  essentials.sethome.limit.5:
+    description: Allows the player to set 5 homes.
+    default: op
+  essentials.sethome.limit.unlimited:
+    description: Allows the player to set unlimited homes.
+    default: op
