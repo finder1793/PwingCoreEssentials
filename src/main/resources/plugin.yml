@@ -57,6 +57,22 @@ commands:
     usage: /setportal <name>
     permission: essentials.setportal
     permission-message: You do not have permission to use this command.
+  vanish:
+    description: "Toggle vanish mode"
+    usage: "/vanish"
+    permission: "pwingcore.vanish"
+  kits:
+    description: "Get a kit"
+    usage: "/kits <kitname>"
+    permission: "essentials.kit"
+  kiteditor:
+    description: "Edit a kit"
+    usage: "/kiteditor <kitname>"
+    permission: "essentials.kit.edit"
+  calendar:
+    description: "Open the calendar"
+    usage: "/calendar"
+    permission: "essentials.calendar"
 permissions:
   essentials.home:
     description: Allows the player to teleport to their home.
@@ -103,3 +119,18 @@ permissions:
   essentials.setportal:
     description: Allows the player to set a portal location.
     default: op
+  pwingcore.vanish:
+    description: "Allows the player to use the vanish command"
+    default: op
+  essentials.kit:
+    description: "Allows the player to use the kits command"
+    default: true
+  essentials.kit.<kitname>:
+    description: "Allows the player to use a specific kit"
+    default: op
+  essentials.kit.edit:
+    description: "Allows the player to edit kits"
+    default: op
+  essentials.calendar:
+    description: "Allows the player to open the calendar"
+    default: true

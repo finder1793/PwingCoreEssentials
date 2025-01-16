@@ -13,8 +13,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class HologramCommand implements CommandExecutor {
+import org.bukkit.ChatColor;
+import org.bukkit.craftbukkit.v1_16_R3.entity.CraftPlayer;
+import net.minecraft.server.v1_16_R3.ChatComponentText;
+import net.minecraft.server.v1_16_R3.ChatModifier;
+import net.minecraft.server.v1_16_R3.ChatClickable;
+import net.minecraft.server.v1_16_R3.IChatBaseComponent;
+import net.minecraft.server.v1_16_R3.PacketPlayOutChat;
 
+import com.github.retrooper.packetevents.protocol.packetwrapper.play.server.WrapperPlayServerPlayerInfo;
+
+public class HologramCommand implements CommandExecutor {
     private final EssentialsPlugin plugin;
     private final Map<String, Hologram> holograms = new HashMap<>();
 
@@ -60,7 +69,53 @@ public class HologramCommand implements CommandExecutor {
                     player.sendMessage("Hologram not found.");
                     return true;
                 }
-                // Implement edit logic
+                Hologram hologramToEdit = holograms.get(name);
+                player.sendMessage("Editing hologram: " + name);
+                for (int i = 0; i < hologramToEdit.getLines().size(); i++) {
+                    String line = hologramToEdit.getLines().get(i);
+                    IChatBaseComponent message = new ChatComponentText("Line " + (i + 1) + ": " + line);
+                    IChatBaseComponent editButton = new ChatComponentText(ChatColor.GREEN + "[Edit]");
+                    editButton.setChatModifier(new ChatModifier().setChatClickable(new ChatClickable(ChatClickable.EnumClickAction.SUGGEST_COMMAND, "/hologram editline " + name + " " + i + " ")));
+                    IChatBaseComponent deleteButton = new ChatComponentText(ChatColor.RED + "[Delete]");
+                    deleteButton.setChatModifier(new ChatModifier().setChatClickable(new ChatClickable(ChatClickable.EnumClickAction.RUN_COMMAND, "/hologram deleteline " + name + " " + i)));
+                    message.addSibling(new ChatComponentText(" "));
+                    message.addSibling(editButton);
+                    message.addSibling(new ChatComponentText(" "));
+                    message.addSibling(deleteButton);
+                    PacketPlayOutChat packet = new PacketPlayOutChat(message);
+                    ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
+                }
+                break;
+            case "editline":
+                if (name == null || args.length < 4 || !holograms.containsKey(name)) {
+                    player.sendMessage("Usage: /hologram editline <name> <index> <new line>");
+                    return true;
+                }
+                int indexToEdit;
+                try {
+                    indexToEdit = Integer.parseInt(args[2]);
+                } catch (NumberFormatException e) {
+                    player.sendMessage("Invalid index.");
+                    return true;
+                }
+                String newLine = String.join(" ", args, 3, args.length);
+                holograms.get(name).setLine(indexToEdit, newLine);
+                player.sendMessage("Hologram line updated.");
+                break;
+            case "deleteline":
+                if (name == null || args.length < 3 || !holograms.containsKey(name)) {
+                    player.sendMessage("Usage: /hologram deleteline <name> <index>");
+                    return true;
+                }
+                int indexToDelete;
+                try {
+                    indexToDelete = Integer.parseInt(args[2]);
+                } catch (NumberFormatException e) {
+                    player.sendMessage("Invalid index.");
+                    return true;
+                }
+                holograms.get(name).removeLine(indexToDelete);
+                player.sendMessage("Hologram line deleted.");
                 break;
             case "remove":
                 if (name == null || !holograms.containsKey(name)) {

@@ -1,0 +1,17 @@
+kits:
+  starter:
+    items:
+      - type: DIAMOND_SWORD
+        amount: 1
+      - type: DIAMOND_PICKAXE
+        amount: 1
+    commands:
+      - "give {player} minecraft:diamond 5"
+  warrior:
+    items:
+      - type: IRON_SWORD
+        amount: 1
+      - type: IRON_CHESTPLATE
+        amount: 1
+    commands:
+      - "give {player} minecraft:iron_ingot 10"

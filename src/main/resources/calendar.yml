@@ -1,0 +1,47 @@
+months:
+  1:
+    name: January
+    length: 31
+  2:
+    name: February
+    length: 28
+  3:
+    name: March
+    length: 31
+  4:
+    name: April
+    length: 30
+  5:
+    name: May
+    length: 31
+  6:
+    name: June
+    length: 30
+  7:
+    name: July
+    length: 31
+  8:
+    name: August
+    length: 31
+  9:
+    name: September
+    length: 30
+  10:
+    name: October
+    length: 31
+  11:
+    name: November
+    length: 30
+  12:
+    name: December
+    length: 31
+events:
+  January 1: "say Happy New Year!"
+  February 14: "say Happy Valentine's Day!"
+  December 25: "say Merry Christmas!"
+  weekly:
+    Monday: "say Weekly meeting!"
+  monthly:
+    1: "say Monthly report!"
+  yearly:
+    January 1: "say Happy New Year!"
